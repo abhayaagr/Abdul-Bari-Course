@@ -1,8 +1,8 @@
 #include <iostream>
 using namespace std;
 
-int sum_recursion(int n){
-    if(n==0){
+int sum_recursion(int n){    //Time Complexity - O(n)
+    if(n==0){                //Space Complexity - O(n)
         return 0;
     }
     else{
@@ -10,16 +10,16 @@ int sum_recursion(int n){
     }
 }
 
-int sum_loops(int n){
-    int sum=0;
+int sum_loops(int n){        //Time Complexity - O(n)
+    int sum=0;               //Space Complexity - O(1)
     for(int i=1;i<=n;i++){
         sum += i;
     }
     return sum;
 }
 
-int sum_formula(int n){
-    return n*(n+1)/2;
+int sum_formula(int n){        //Time Complexity - O(1)  --> Best approach
+    return n*(n+1)/2;          //Space Complexity - O(1)
 }
 
 int main()
