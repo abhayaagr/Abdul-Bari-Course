@@ -8,14 +8,14 @@ class Array{
         int length;
         
     public:
-        void initialise();
-        void display();
-        void append(int x);
-        void insert(int index, int x);  
+        void initialise();              //Time - O(n) | Space - O(n)
+        void display();                 //Time - O(n) | Space - O(1)
+        void append(int x);             //Time - O(1) | Space - O(1)
+        void insert(int index, int x);  //Time - O(n) | Space - O(1)  
 };
 
-void Array :: initialise(){                  //Time - O(n)
-        cout<<"Enter size of array: ";       //Space - O(n)
+void Array :: initialise(){                  
+        cout<<"Enter size of array: ";       
         cin>>size;
         A = new int[size];
             
@@ -33,16 +33,16 @@ void Array :: initialise(){                  //Time - O(n)
         cin>>A[i];
 }
 
-void Array :: display(){                                            //Time - O(n)
-        cout<<"Displaying all the elements of array:"<<endl;        //Space - O(1)
+void Array :: display(){                                            
+        cout<<"Displaying all the elements of array:"<<endl;        
         for(int i = 0;i<length;i++){
            cout<<A[i]<<" ";
         }
         cout<<endl;
 }
 
-void Array :: append(int x){                              //Time - O(1)
-        if(length<size){                                  //Space - O(1)
+void Array :: append(int x){                              
+        if(length<size){                                  
             A[length] = x;
             length++;
         }
@@ -51,8 +51,8 @@ void Array :: append(int x){                              //Time - O(1)
         }
 }
 
-void Array :: insert(int index, int x){                   //Time - O(n)
-    if(index<=length && length<size){                     //Space - O(1)
+void Array :: insert(int index, int x){                   
+    if(index<=length && length<size){                     
         for(int i = length; i>index; i--)
             A[i] = A[i-1];
         A[index] = x;
