@@ -8,13 +8,13 @@ class Array{
         int length;
         
     public:
-        void initialise();              //Time - O(n)  //Space - O(n)
-        void display();                 //Time - O(n)  //Space - O(1)
-        void append(int x);             //Time - O(1)  //Space - O(1)
-        void insert(int index, int x);  //Time - O(n)  //Space - O(1)
-        bool isValid(int index);        //Time - O(1)  //Space - O(1)
-        bool isFull();                  //Time - O(1)  //Space - O(1)
-        void deleteIndex(int index);    //Time - O(n)  //Space - O(1)
+        void initialise();              //Time - O(n) | Space - O(n)
+        void display();                 //Time - O(n) | Space - O(1)
+        void append(int x);             //Time - O(1) | Space - O(1)
+        void insert(int index, int x);  //Time - O(n) | Space - O(1)
+        bool isValid(int index);        //Time - O(1) | Space - O(1)
+        bool isFull();                  //Time - O(1) | Space - O(1)
+        void deleteIndex(int index);    //Time - O(n) | Space - O(1)
 };
 
 void Array :: initialise(){                            
