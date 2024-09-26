@@ -13,7 +13,7 @@ class Array{
 
         void binarySearch();
         int Iter_BS(int low, int high, int key);    //Time - O(log n) | Space - O(1)
-        int Rec_BS(int low, int high, int key);     //Time - O(log n) | Space - O(n)
+        int Rec_BS(int low, int high, int key);     //Time - O(log n) | Space - O(log n)
 };
 
 void Array :: initialise(){                            
