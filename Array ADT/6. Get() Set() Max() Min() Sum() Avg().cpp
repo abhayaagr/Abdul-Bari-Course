@@ -96,9 +96,9 @@ int Array :: min(){
     return mini;
 }
 
-int Array :: sum(){
-    int sum = 0;
-    for(int i=0;i<length;i++){
+int Array :: sum(){                //Can be done recursively too with Time - O(n) and Space - O(n)
+    int sum = 0;                   //sum(A,n) = 0, n<0
+    for(int i=0;i<length;i++){     //         = sum(A,n-1) + A[n], n>=0
         sum += A[i];
     }
     return sum;
