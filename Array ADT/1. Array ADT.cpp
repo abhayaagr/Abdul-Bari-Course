@@ -8,8 +8,8 @@ class Array{
         int length;
         
     public:
-        void initialise();
-        void display();
+        void initialise();              //Time - O(n) | Space - O(n)
+        void display();                 //Time - O(n) | Space - O(1)
 };
 
 void Array :: initialise(){
