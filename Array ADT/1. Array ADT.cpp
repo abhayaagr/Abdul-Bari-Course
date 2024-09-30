@@ -31,6 +31,7 @@ void Array :: display(){
         for(int i = 0;i<length;i++){
            cout<<A[i]<<" ";
         }
+        cout<<endl;
 }
 
 int main()
