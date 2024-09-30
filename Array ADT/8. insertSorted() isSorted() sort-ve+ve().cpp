@@ -39,7 +39,7 @@ void Array :: display(){
 
 void Array :: insertInSorted(int x){
     int i = length-1;
-    while(A[i] > x){
+    while(i>=0 && A[i] > x){
         A[i+1] = A[i];
         i--;
     }
