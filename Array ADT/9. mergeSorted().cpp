@@ -28,3 +28,52 @@ int main()
     
     return 0;
 }
+
+
+
+//
+//   USING CLASS ->
+//
+
+
+#include <iostream>
+using namespace std;
+
+class Array{
+  public:
+    int arr[10];
+    int length;
+    void display(){
+        for(int i = 0; i < length; i++)
+            cout << arr[i] << " ";
+        cout << endl;
+    }
+};
+
+Array* mergeSorted(Array A, Array B){
+    Array *C = new Array;
+    int i = 0, j = 0, k = 0;
+    while(i < A.length && j < B.length){
+        if(A.arr[i] < B.arr[j])
+            C->arr[k++] = A.arr[i++];
+        else
+            C->arr[k++] = B.arr[j++];    
+    }
+    for(; i < A.length; i++)
+        C->arr[k++] = A.arr[i];
+    for(; j < B.length; j++)
+        C->arr[k++] = B.arr[j];
+    C->length = A.length + B.length;
+    return C;
+}
+
+int main()
+{
+    Array A = {{3,8,16,20,25}, 5};
+    Array B = {{4,10,12,22,23}, 5};
+    Array *C = mergeSorted(A, B);
+    C->display();
+    
+    return 0;
+}
+
