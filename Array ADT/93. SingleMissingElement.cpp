@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int singleMissing(int arr[], int n){
+int singleMissing(int arr[], int n){        // Time - O(n) | Space - O(1)
     if(n==0)    return 0;
     int diff = arr[0];
     for(int i=0;i<n;i++){
