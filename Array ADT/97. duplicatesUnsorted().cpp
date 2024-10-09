@@ -18,11 +18,23 @@ void duplicatesUnsorted(int arr[], int n){      // Time - O(n^2) | Space - O(1)
     }
 }
 
+void countDuplicatesUnsorted(int arr[], int n){      // Time - O(n) | Space - O(n)
+    int count[n] = {0};
+    for(int i=0;i<n;i++){
+        count[arr[i]]++;
+    }
+    for(int i=0;i<n;i++){
+        if(count[i] > 1){
+            cout<<i<<" is repeated "<<count[i]<<" times."<<endl;
+        }
+    }
+}
 
 int main() {
     int arr[] = {8,3,6,4,6,5,6,8,2,7};
     int n = sizeof(arr)/sizeof(arr[0]);
+    countDuplicatesUnsorted(arr,n);
+    cout<<endl;
     duplicatesUnsorted(arr,n);
-    
     return 0;
 }
