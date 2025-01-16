@@ -3,13 +3,21 @@ using namespace std;
 
 class DiagonalMatrix{
   private:
-    int A[10] = {0};
+    int *A;
     int n;
     
   public:
+    DiagonalMatrix(){
+        n = 2;
+        A = new int[2];
+    }
     DiagonalMatrix(int n){
         this->n = n;
-    }  
+        A = new int[n];
+    }
+    ~DiagonalMatrix(){
+        delete []A;
+    }
     void set(int i, int j, int x){
         if(i==j)
             A[i] = x;
@@ -33,6 +41,7 @@ class DiagonalMatrix{
         }
     }
 };
+
 int main() {
     DiagonalMatrix m(5);
     m.set(0,0,1);
