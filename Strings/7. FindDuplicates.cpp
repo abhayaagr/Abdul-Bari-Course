@@ -33,17 +33,17 @@ void findDuplicates2(char A[]){     //Time - O(n) | Space - O(1)
         cout<<"No duplicates";
 }
 
-// void findDuplicates3(char A[]){     //Time - O(n) | Space - O(1)
-//     long long int H=0,x=0;
-//     for(int i=0;A[i]!='\0';i++){
-//         x=1;
-//         x=x<<(A[i]-97);
-//         if(x&H>0)
-//             cout<<A[i]<<" is repeated"<<endl;
-//         else
-//             H = x|H;
-//     }
-// }
+ void findDuplicates3(char A[]){     //Time - O(n) | Space - O(1)
+     long long int H=0,x=0;
+     for(int i=0;A[i]!='\0';i++){
+         x=1;
+         x=x<<(A[i]-'a');
+         if((x&H)>0)
+             cout<<A[i]<<" is repeated"<<endl;
+         else
+             H = x|H;
+     }
+ }
 
 int main() {
     char A[] = "finding";
@@ -51,7 +51,7 @@ int main() {
     cout<<endl;
     findDuplicates2(A); 
     cout<<endl;
-    // findDuplicates3(A); 
+    findDuplicates3(A); 
     
     return 0;
 }
