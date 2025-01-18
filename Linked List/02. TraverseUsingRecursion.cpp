@@ -22,14 +22,14 @@ void create(int arr[], int n){
 }
 
 void display(struct Node *p){       //Traversal using Loop
-    while(p != NULL){
+    while(p != NULL){               // Time - O(n) | Space - O(1)
         cout<<p->data<<" ";
         p = p->next;
     }
 }
 
 void Rdisplay(struct Node *p){      //Traversal using Recursion
-    if(p != NULL){
+    if(p != NULL){                  // Time - O(n) | Space - O(n)
         // cout<<p->data<<" ";     //Prints forward
         Rdisplay(p->next);
         cout<<p->data<<" ";     //Prints backward
