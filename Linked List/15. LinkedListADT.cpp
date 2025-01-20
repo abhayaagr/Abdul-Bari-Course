@@ -14,25 +14,27 @@ class LinkedList{
         Node<T> *head;
         Node<T> *tail;
     public:
-        LinkedList(){head = tail = NULL;}   // Time - O(1) | Space - O(1)
-        LinkedList(T arr[], int n);         // Time - O(n) | Space - O(n)
-        ~LinkedList();                      // Time - O(n) | Space - O(1)
+        LinkedList(){head = tail = NULL;}       // Time - O(1) | Space - O(1)
+        LinkedList(T arr[], int n);             // Time - O(n) | Space - O(n)
+        ~LinkedList();                          // Time - O(n) | Space - O(1)
         
-        void display();                     // Time - O(n) | Space - O(1)
-        int length();                       // Time - O(n) | Space - O(1)
-        T deleteNode(int index);            // Time - O(n) | Space - O(1)
-        T sum();                            // Time - O(n) | Space - O(1)
-        T maxi();                           // Time - O(n) | Space - O(1)
-        T mini();                           // Time - O(n) | Space - O(1)
-        Node<T>* search(T key);             // Time - O(n) | Space - O(1)
-        Node<T>* MoveToHeadsearch(T key);   // Time - O(n) | Space - O(1)
-        void insert(int index, T x);        // Time - O(n) | Space - O(1)
-        void insertAtLast(T x);             // Time - O(1) | Space - O(1) If tail maintained
-        void insertSorted(T x);             // Time - O(n) | Space - O(1)
-        bool isSorted();                    // Time - O(n) | Space - O(1)
-        void removeDuplicates();            // Time - O(n) | Space - O(1)
-        void reverseNodes();                // Time - O(n) | Space - O(1)
-        bool isLoop();                      // Time - O(n) | Space - O(1)
+        void display();                         // Time - O(n) | Space - O(1)
+        int length();                           // Time - O(n) | Space - O(1)
+        T deleteNode(int index);                // Time - O(n) | Space - O(1)
+        T sum();                                // Time - O(n) | Space - O(1)
+        T maxi();                               // Time - O(n) | Space - O(1)
+        T mini();                               // Time - O(n) | Space - O(1)
+        Node<T>* search(T key);                 // Time - O(n) | Space - O(1)
+        Node<T>* MoveToHeadsearch(T key);       // Time - O(n) | Space - O(1)
+        void insert(int index, T x);            // Time - O(n) | Space - O(1)
+        void insertAtLast(T x);                 // Time - O(1) | Space - O(1) If tail maintained
+        void insertSorted(T x);                 // Time - O(n) | Space - O(1)
+        bool isSorted();                        // Time - O(n) | Space - O(1)
+        void removeDuplicates();                // Time - O(n) | Space - O(1)
+        void reverseNodes();                    // Time - O(n) | Space - O(1)
+        bool isLoop();                          // Time - O(n) | Space - O(1)
+        void concat(LinkedList<T>* l2);         // Time - O(n) | Space - O(1)
+        void mergeSorted(LinkedList<T>* l2);    // Time - O(m+n) | Space - O(1)
 };
 
 template<class T>
@@ -72,7 +74,7 @@ void LinkedList<T> :: display(){       // Time - O(n) | Space - O(1)
 
 template<class T>
 int LinkedList<T> :: length(){      // Time - O(n) | Space - O(1)
-    int c = 0;                   // Using loops
+    int c = 0;                   
     Node<T> *p = head;
     while(p){
         c++;
@@ -278,31 +280,87 @@ bool LinkedList<T> :: isLoop(){              // Time - O(n) | Space - O(1)
     return false;
 }
 
+template<class T>
+void LinkedList<T> :: concat(LinkedList<T>* l2){      // Time - O(n) | Space - O(1)
+    Node<T> *p = head;
+    while(p->next)  p=p->next;
+    p->next = l2->head;
+}
+
+template<class T>
+void LinkedList<T> :: mergeSorted(LinkedList<T>* l2){       // Time - O(m+n) | Space - O(1)
+    Node<T> *p = this->head;
+    Node<T> *s = l2->head;
+    if(p->data >= s->data){
+        head = s;
+        s=s->next;
+        head->next = p;
+        p=head;
+    }
+    while(p->next && s){
+        if(p->data <= s->data && p->next->data > s->data){
+            Node<T> *temp = p->next;
+            p->next = s;
+            s=s->next;
+            p=p->next;
+            p->next = temp;
+        }
+        else{
+            p=p->next;
+        }
+    }
+    if(s) p->next = s;
+}
+
 int main() {
     int arr[] = {1,2,3,4,5};
     LinkedList<int> l(arr,5);
     
     l.display();
+    
     cout<<"Length: "<<l.length()<<endl;
+    
     cout<<"Data deleted: "<<l.deleteNode(0)<<endl;
+    
     cout<<"Sum: "<<l.sum()<<endl;
+    
     cout<<"Maximun: "<<l.maxi()<<endl;
+    
     cout<<"Minimum: "<<l.mini()<<endl;
+    
     cout<<"Search data: "<<l.search(4)->data<<endl;
+    
     l.MoveToHeadsearch(3);
     cout<<"After moving to head: "; l.display();
+    
     l.insert(5, 8);
     cout<<"After inserting: "; l.display();
+    
     l.insertAtLast(10);
     cout<<"After inserting at last: "; l.display();
+    
     l.insertSorted(5);
     cout<<"After inserting in sorted: "; l.display();
+    
     cout<<"Is Sorted? "<<l.isSorted()<<endl;
+    
     l.removeDuplicates();
     cout<<"After removing duplicates: "; l.display();
+    
     l.reverseNodes();
     cout<<"After reversing: "; l.display();
+    
     cout<<"Is Loop? "<<l.isLoop()<<endl;
+    
+    int arr2[] = {0,6,7,8,9};
+    LinkedList<int>* l2 = new LinkedList<int>(arr2,5);
+    l.concat(l2);
+    cout<<"After Concatenating: "; l.display();
+    
+    if(l.isSorted()){
+        l.mergeSorted(l2);
+        cout<<"After merging sorted lists: "; l.display();
+    }    
     
     return 0;
 }
