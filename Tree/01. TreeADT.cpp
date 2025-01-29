@@ -25,12 +25,12 @@ class Tree{
 
   public:
     Tree(){root = NULL;}
-    void create();
-    void preOrder();
-    void postOrder();
-    void inOrder();
-    void levelOrder();
-    void height();
+    void create();          // Time - O(n) | Space - O(n)
+    void preOrder();        // Time - O(n) | Space - O(log n) - O(n)
+    void postOrder();       // Time - O(n) | Space - O(log n) - O(n)
+    void inOrder();         // Time - O(n) | Space - O(log n) - O(n)
+    void levelOrder();      // Time - O(n) | Space - O(log n) - O(n)
+    void height();          // Time - O(n) | Space - O(log n) - O(n)
 };
 
 template<class T>
