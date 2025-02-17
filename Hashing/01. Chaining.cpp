@@ -50,7 +50,6 @@ int hashFn(int key){
 void insert(Node* H[], int key){
     int index = hashFn(key);
     insertSorted(H[index], key);
-    cout<<index<<" "<<key<<endl;
 }
 
 int main() {
